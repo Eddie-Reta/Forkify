@@ -1,0 +1,15 @@
+{
+    //actual transformation of out code 
+    "presets": [
+        //enviorment
+       [ "@babel/preset-env", {
+            //babel then figures it out
+            "targets": {
+                "browsers": [
+                    "last 5 versions",
+                    "ie >= 8"
+                ]
+            }
+        }]
+    ]
+}
