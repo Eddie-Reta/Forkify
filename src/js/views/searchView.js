@@ -10,6 +10,24 @@ export const clearResults = () => {
     elements.searchResList.innerHTML = "";
 };
 
+//title size 
+const limitRecipeTitle = (title, limit = 17) => {
+    
+    const newTitle = [];
+
+    if (title.length > length) {
+        title.split(" ").reduce((acc, cur) => {
+            
+            if(acc + cur.length <= limit) {
+                newTitle.push(cur)
+            }
+            return acc + cur.length;
+        },0);
+        return `${newTitle.join(' ')} ...`;
+    } 
+    return title;
+};
+
 const renderRecipe = recipe => {
 
     const markup = `
@@ -19,7 +37,7 @@ const renderRecipe = recipe => {
             <img src="${recipe.image_url}" alt="Test">
         </figure>
         <div class="likes__data">
-            <h4 class="likes__name">${recipe.title}</h4>
+            <h4 class="likes__name">${limitRecipeTitle(recipe.title)}</h4>
             <p class="likes__author">${recipe.publisher}</p>
         </div>
     </a>
