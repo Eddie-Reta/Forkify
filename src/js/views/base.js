@@ -8,6 +8,7 @@ export const elements = {
 
     searchResList: document.querySelector(".results__list"),
 
+    searchResPages: document.querySelector('.results__pages')
 
 };
 
