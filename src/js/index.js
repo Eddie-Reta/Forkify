@@ -4,6 +4,8 @@ import Search from "./models/Search";
 
 import Recipe from "./models/Recipe";
 
+import List from "./models/List"
+
 import * as recipeView from "./views/recipeView";
 
 import * as searchView from "./views/searchView";
@@ -148,10 +150,15 @@ elements.recipe.addEventListener("click", e => {
             //increase button is clicked   
         state.recipe.updateServings("inc");
         recipeView.updateServingsIngrediensts(state.recipe);
-    }
+    } else if (e.target.matches('.recipe__btn--add *')) {
+        controlList() {
+            
+        }
+    };
     console.log(state.recipe);
 });
 
+window.l = new List();
 
 
 
