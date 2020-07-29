@@ -157,19 +157,24 @@ const controlRecipe = async () => {
 //Handle delete and update list item events
 
 elements.shopping.addEventListener("click", e => {
-
+    
     const id = e.target.closest(".shopping__item").dataset.itemid;
-    console.log(id)
+    
     //Handle the delete button
 
     if (e.target.matches(".shopping__delete, .shopping__delete *")) {
         //Delete from state
-            console.log("delete button")
+            
             state.list.deleteItem(id);
         //delete from ui
             listView.deleteItem(id);
         
-    }
+            //Handle the count update
+    } else if (e.target.matches(".shopping__count-value")) {
+        const val = parseFloat(e.target.value, 10);
+        console.log(val)
+        state.list.updateCount(id, val)
+    };
 
 });
 
@@ -189,7 +194,7 @@ elements.recipe.addEventListener("click", e => {
     } else if (e.target.matches('.recipe__btn--add, .recipe__btn--add *')) {
         controlList();
     };
-    console.log(state.recipe);
+   // console.log(state.recipe);
 });
 
 window.l = new List();
