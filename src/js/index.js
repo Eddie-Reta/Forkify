@@ -97,8 +97,7 @@ elements.searchResPages.addEventListener("click", e => {
 });
 
 /*Recipe controller*/
-//tESTING
-state.likes = new Likes();
+
 const controlRecipe = async () => {
     //Get id from url
     const id = window.location.hash.replace("#", "")
@@ -191,8 +190,7 @@ elements.shopping.addEventListener("click", e => {
 /**
  * Like Controller
  */
-//Testing
-likesView.toggleLikeMenu(state.likes.getNumLikes());
+
 
 const controlLike = () => {
     
@@ -231,6 +229,17 @@ const controlLike = () => {
     likesView.toggleLikeMenu(state.likes.getNumLikes());
 };
 
+// Restore liked recipe on page load
+
+window.addEventListener("load", () => {
+    state.likes = new Likes();
+    //Restore like
+    state.likes.readStorage();
+    //Toggle like menu button
+    likesView.toggleLikeMenu(state.likes.getNumLikes());
+    //render existing likes
+    state.likes.likes.forEach(like => likesView.renderLike(like))
+});
 
 // Handling recipe button clicks
 elements.recipe.addEventListener("click", e => {
