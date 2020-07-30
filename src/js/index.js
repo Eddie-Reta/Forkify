@@ -32,7 +32,6 @@ import { elements, renderLoader, clearLoader } from "./views/base";
 // event listeners going in the controller
 
 const state = {};
-window.state = state;
 /*
     *Search Controller
 
@@ -101,8 +100,6 @@ elements.searchResPages.addEventListener("click", e => {
 const controlRecipe = async () => {
     //Get id from url
     const id = window.location.hash.replace("#", "")
-  //  console.log(id);
-
 
     if (id) {
         //prepare ui for changes
@@ -181,7 +178,7 @@ elements.shopping.addEventListener("click", e => {
             //Handle the count update
     } else if (e.target.matches(".shopping__count-value")) {
         const val = parseFloat(e.target.value, 10);
-        console.log(val)
+
         state.list.updateCount(id, val)
     };
 
@@ -260,23 +257,5 @@ elements.recipe.addEventListener("click", e => {
     } else if (e.target.matches(".recipe__love, .recipe__love *")){
         //Like controller 
         controlLike();
-    } // console.log(state.recipe);
+    } 
 });
-
-window.l = new List();
-
-
-
-
-
-
-
-
-
-
-// const search = new Search("pizza");
-
-// console.log(search)
-
-// search.getResults();
-
